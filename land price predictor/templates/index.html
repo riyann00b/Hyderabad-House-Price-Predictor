@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hyderabad House Price Predictor</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Hyderabad House Price Predictor</h1>
+      <form id="prediction-form">
+        <div class="form-group">
+          <label for="title">Type:</label>
+          <select id="title" name="title" required>
+            <option value="">Select Type</option>
+            <option value="3 BHK Apartment">3 BHK Apartment</option>
+            <option value="2 BHK Apartment">2 BHK Apartment</option>
+            <option value="Residential Plot">Residential Plot</option>
+            <option value="4 BHK Villa">4 BHK Villa</option>
+            <option value="4 BHK Apartment">4 BHK Apartment</option>
+            <option value="5 BHK Villa">5 BHK Villa</option>
+            <option value="3 BHK Independent House">
+              3 BHK Independent House
+            </option>
+            <option value="2 BHK Independent House">
+              2 BHK Independent House
+            </option>
+            <option value="3 BHK Independent Floor">
+              3 BHK Independent Floor
+            </option>
+            <option value="5 BHK Independent House">
+              5 BHK Independent House
+            </option>
+            <option value="10 BHK Independent House">
+              10 BHK Independent House
+            </option>
+            <option value="7 BHK Independent House">
+              7 BHK Independent House
+            </option>
+            <option value="3 BHK Villa">3 BHK Villa</option>
+            <option value="4 BHK Independent House">
+              4 BHK Independent House
+            </option>
+            <option value="8 BHK Independent House">
+              8 BHK Independent House
+            </option>
+            <option value="6 BHK Independent House">
+              6 BHK Independent House
+            </option>
+            <option value="1 BHK Apartment">1 BHK Apartment</option>
+            <option value="2 BHK Independent Floor">
+              2 BHK Independent Floor
+            </option>
+            <option value="1 BHK Independent House">
+              1 BHK Independent House
+            </option>
+            <option value="5 BHK Apartment">5 BHK Apartment</option>
+            <option value="9 BHK Independent House">
+              9 BHK Independent House
+            </option>
+            <option value="1 RK Studio Apartment">1 RK Studio Apartment</option>
+            <option value="4 BHK Independent Floor">
+              4 BHK Independent Floor
+            </option>
+            <option value="6 BHK Villa">6 BHK Villa</option>
+            <option value="2 BHK Villa">2 BHK Villa</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <select id="location" name="location" required>
+            <option value="">Select a location</option>
+            <option value="7 Tombs Road">7 Tombs Road</option>
+            <option value="AS Rao Nagar">AS Rao Nagar</option>
+            <option value="Abdullapurmet">Abdullapurmet</option>
+            <option value="Abids">Abids</option>
+            <option value="Adibatla">Adibatla</option>
+            <option value="Adikmet">Adikmet</option>
+            <option value="Ahilya Nagar">Ahilya Nagar</option>
+            <option value="Ahmed Colony Hyderabad">
+              Ahmed Colony Hyderabad
+            </option>
+            <option value="Ahmed Nagar">Ahmed Nagar</option>
+            <option value="Alair">Alair</option>
+            <option value="Alkapur township">Alkapur township</option>
+            <option value="Almasguda">Almasguda</option>
+            <option value="Alwal">Alwal</option>
+            <option value="Amangal">Amangal</option>
+            <option value="Amberpet">Amberpet</option>
+            <option value="Ameenpur">Ameenpur</option>
+            <option value="Ameerpet">Ameerpet</option>
+            <option value="Aminpur">Aminpur</option>
+            <option value="Annojiguda">Annojiguda</option>
+            <option value="Appa Junction">Appa Junction</option>
+            <option value="Appa Junction Peerancheru">
+              Appa Junction Peerancheru
+            </option>
+            <option value="Aremaishamma">Aremaishamma</option>
+            <option value="Aroor">Aroor</option>
+            <option value="Ashok Nagar">Ashok Nagar</option>
+            <option value="Attapur">Attapur</option>
+            <option value="Auto Nagar">Auto Nagar</option>
+            <option value="BB Nagar">BB Nagar</option>
+            <option value="BHEL Employees Co operative Housing Society">
+              BHEL Employees Co operative Housing Society
+            </option>
+            <option value="Bacharam">Bacharam</option>
+            <option value="Bachupally">Bachupally</option>
+            <option value="Badangpet">Badangpet</option>
+            <option value="Bahadurpally">Bahadurpally</option>
+            <option value="Bairagiguda">Bairagiguda</option>
+            <option value="Balanagar">Balanagar</option>
+            <option value="Balapur">Balapur</option>
+            <option value="Bandaraviryal">Bandaraviryal</option>
+            <option value="Bandlaguda Jagir">Bandlaguda Jagir</option>
+            <option value="Banjara Hills">Banjara Hills</option>
+            <option value="Basheer Bagh">Basheer Bagh</option>
+            <option value="Batasingaram">Batasingaram</option>
+            <option value="Beeramguda">Beeramguda</option>
+            <option value="Begum Bazar Chatri">Begum Bazar Chatri</option>
+            <option value="Begumpet">Begumpet</option>
+            <option value="Begumpet Flyover">Begumpet Flyover</option>
+            <option value="Bhanur">Bhanur</option>
+            <option value="Bhanur village">Bhanur village</option>
+            <option value="Bhongir">Bhongir</option>
+            <option value="Bhuvanagiri">Bhuvanagiri</option>
+            <option value="Bibinagar">Bibinagar</option>
+            <option value="Boduppal">Boduppal</option>
+            <option value="Boduppal Dwaraka Nagar">
+              Boduppal Dwaraka Nagar
+            </option>
+            <option value="Boduppal Road">Boduppal Road</option>
+            <option value="Boiguda">Boiguda</option>
+            <option value="Bolarum">Bolarum</option>
+            <option value="Bollaram Industrial Area">
+              Bollaram Industrial Area
+            </option>
+            <option value="Bowenpally">Bowenpally</option>
+            <option value="Bowrampet">Bowrampet</option>
+            <option value="Brindavan Colony">Brindavan Colony</option>
+            <option value="Bundalguda">Bundalguda</option>
+            <option value="Bureddipalle">Bureddipalle</option>
+            <option value="Chandanagar">Chandanagar</option>
+            <option value="Chegunta">Chegunta</option>
+            <option value="Chengicherla">Chengicherla</option>
+            <option value="Chennaram">Chennaram</option>
+            <option value="Cherlapalli">Cherlapalli</option>
+            <option value="Chevella">Chevella</option>
+            <option value="Chikkadapally">Chikkadapally</option>
+            <option value="Chilkanagar">Chilkanagar</option>
+            <option value="Choutuppal">Choutuppal</option>
+            <option value="DK Enclave">DK Enclave</option>
+            <option value="DK Road">DK Road</option>
+            <option value="DLF Cyber City">DLF Cyber City</option>
+            <option value="Dammaiguda">Dammaiguda</option>
+            <option value="Deluxe Colony">Deluxe Colony</option>
+            <option value="Dhobipet">Dhobipet</option>
+            <option value="Diamond Hill Colony">Diamond Hill Colony</option>
+            <option value="Diamond Point Road">Diamond Point Road</option>
+            <option value="Digwal">Digwal</option>
+            <option value="Dilsukh Nagar">Dilsukh Nagar</option>
+            <option value="Dulapally">Dulapally</option>
+            <option value="Dullapally">Dullapally</option>
+            <option value="Dundigal">Dundigal</option>
+            <option value="ECIL">ECIL</option>
+            <option value="East Marredpally">East Marredpally</option>
+            <option value="Eklaskhanpeta">Eklaskhanpeta</option>
+            <option value="Erragadda">Erragadda</option>
+            <option value="Essamiya Bazar">Essamiya Bazar</option>
+            <option value="Etebar Chowk Hyderabad">
+              Etebar Chowk Hyderabad
+            </option>
+            <option value="Excise Colony">Excise Colony</option>
+            <option value="Express Highway">Express Highway</option>
+            <option value="Fair Lands">Fair Lands</option>
+            <option value="Falaknuma">Falaknuma</option>
+            <option value="Film Nagar">Film Nagar</option>
+            <option value="First Lancer Road">First Lancer Road</option>
+            <option value="Flamingo">Flamingo</option>
+            <option value="Friends Colony Bandam Kommu">
+              Friends Colony Bandam Kommu
+            </option>
+            <option value="Friends Colony Jawahar Colony">
+              Friends Colony Jawahar Colony
+            </option>
+            <option value="Friends Colony Sai Nagar">
+              Friends Colony Sai Nagar
+            </option>
+            <option value="Gachibowli">Gachibowli</option>
+            <option value="Gaddi Annaram">Gaddi Annaram</option>
+            <option value="Gagillapur">Gagillapur</option>
+            <option value="Gajularamaram">Gajularamaram</option>
+            <option value="Gajulramaram Kukatpally">
+              Gajulramaram Kukatpally
+            </option>
+            <option value="Gandipet">Gandipet</option>
+            <option value="Gantlavelli">Gantlavelli</option>
+            <option value="Gatkeshwar">Gatkeshwar</option>
+            <option value="General Bazar">General Bazar</option>
+            <option value="Ghatkesar">Ghatkesar</option>
+            <option value="Ghatkesar Road">Ghatkesar Road</option>
+            <option value="Ghori Nagar">Ghori Nagar</option>
+            <option value="Ghouse Nagar">Ghouse Nagar</option>
+            <option value="Giani Zail Singh Nagar">
+              Giani Zail Singh Nagar
+            </option>
+            <option value="Godumakunta">Godumakunta</option>
+            <option value="Gopanpally">Gopanpally</option>
+            <option value="Gowrelly">Gowrelly</option>
+            <option value="Gundlapochampally">Gundlapochampally</option>
+            <option value="HB Colony Main Road">HB Colony Main Road</option>
+            <option value="HCL Nagar">HCL Nagar</option>
+            <option value="Habeeb Nagar">Habeeb Nagar</option>
+            <option value="Habsiguda">Habsiguda</option>
+            <option value="Hafeezpet">Hafeezpet</option>
+            <option value="Hafiz Baba Nagar">Hafiz Baba Nagar</option>
+            <option value="Hakimpet">Hakimpet</option>
+            <option value="Harshaguda">Harshaguda</option>
+            <option value="Hasmathpet">Hasmathpet</option>
+            <option value="Hayathnagar">Hayathnagar</option>
+            <option value="Hill Top Colony">Hill Top Colony</option>
+            <option value="Himayat Nagar">Himayat Nagar</option>
+            <option value="Himayatnagar">Himayatnagar</option>
+            <option value="Hitech City">Hitech City</option>
+            <option value="Humayunagar">Humayunagar</option>
+            <option value="Hyd Banglore Highway">Hyd Banglore Highway</option>
+            <option value="Hyder Nagar">Hyder Nagar</option>
+            <option value="Hyder nagar kphb colony">
+              Hyder nagar kphb colony
+            </option>
+            <option value="Hyderabad Warangal Bhopalpatnam Highway">
+              Hyderabad Warangal Bhopalpatnam Highway
+            </option>
+            <option value="Hyderabad Warangal Hwy">
+              Hyderabad Warangal Hwy
+            </option>
+            <option value="IDPL Colony">IDPL Colony</option>
+            <option value="Ibrahimpatnam">Ibrahimpatnam</option>
+            <option value="Indresham">Indresham</option>
+            <option value="Inole">Inole</option>
+            <option value="Isnapur">Isnapur</option>
+            <option value="JP Darga">JP Darga</option>
+            <option value="Jadcherla">Jadcherla</option>
+            <option value="Jai Hind Nagar Road">Jai Hind Nagar Road</option>
+            <option value="Janachaitanya Colony">Janachaitanya Colony</option>
+            <option value="Janawada">Janawada</option>
+            <option value="Jawahar nagar">Jawahar nagar</option>
+            <option value="Jeedimetla">Jeedimetla</option>
+            <option value="Jhangir Pet">Jhangir Pet</option>
+            <option value="Jubilee Hills">Jubilee Hills</option>
+            <option value="Kachiguda">Kachiguda</option>
+            <option value="Kadtal">Kadtal</option>
+            <option value="Kadthal">Kadthal</option>
+            <option value="Kamkole">Kamkole</option>
+            <option value="Kanchan Bagh">Kanchan Bagh</option>
+            <option value="Kandi">Kandi</option>
+            <option value="Kandukur">Kandukur</option>
+            <option value="Kapra">Kapra</option>
+            <option value="Kavadiguda">Kavadiguda</option>
+            <option value="Kavadipally">Kavadipally</option>
+            <option value="Khajaguda Nanakramguda Road">
+              Khajaguda Nanakramguda Road
+            </option>
+            <option value="Khajiguda">Khajiguda</option>
+            <option value="Kismatpur">Kismatpur</option>
+            <option value="Kistareddypet">Kistareddypet</option>
+            <option value="Kokapet">Kokapet</option>
+            <option value="Kolanupaka">Kolanupaka</option>
+            <option value="Kollur">Kollur</option>
+            <option value="Kollur Road">Kollur Road</option>
+            <option value="Kompally">Kompally</option>
+            <option value="Kondakal">Kondakal</option>
+            <option value="Kondapur">Kondapur</option>
+            <option value="Kongara Kalan">Kongara Kalan</option>
+            <option value="Kothaguda">Kothaguda</option>
+            <option value="Kothapet">Kothapet</option>
+            <option value="Kothur">Kothur</option>
+            <option value="Kowkur">Kowkur</option>
+            <option value="Krishna Nagar Colony">Krishna Nagar Colony</option>
+            <option value="Kukatpally">Kukatpally</option>
+            <option value="Kushaiguda">Kushaiguda</option>
+            <option value="LB Nagar">LB Nagar</option>
+            <option value="Lakdikapul">Lakdikapul</option>
+            <option value="Lingampally">Lingampally</option>
+            <option value="Linghampally">Linghampally</option>
+            <option value="MES Colony">MES Colony</option>
+            <option value="Maddur">Maddur</option>
+            <option value="Madeenaguda">Madeenaguda</option>
+            <option value="Madhapur">Madhapur</option>
+            <option value="Madhapur Ayyappa Society">
+              Madhapur Ayyappa Society
+            </option>
+            <option value="Madinaguda">Madinaguda</option>
+            <option value="Mahabubnagar">Mahabubnagar</option>
+            <option value="Mahendra Hills">Mahendra Hills</option>
+            <option value="Mahesh Nagar">Mahesh Nagar</option>
+            <option value="Maheshwaram">Maheshwaram</option>
+            <option value="Malakpet">Malakpet</option>
+            <option value="Malikdanguda">Malikdanguda</option>
+            <option value="Malkajgiri">Malkajgiri</option>
+            <option value="Malkapur">Malkapur</option>
+            <option value="Mallampet">Mallampet</option>
+            <option value="NEW MALAKPET">NEW MALAKPET</option>
+            <option value="NH765">NH765</option>
+            <option value="Nacharam">Nacharam</option>
+            <option value="Nagaram">Nagaram</option>
+            <option value="Nagarguda">Nagarguda</option>
+            <option value="Nagarjuna Sagar Road">Nagarjuna Sagar Road</option>
+            <option value="Nagole">Nagole</option>
+            <option value="Nallagandla Gachibowli">
+              Nallagandla Gachibowli
+            </option>
+            <option value="Nallagandla Road">Nallagandla Road</option>
+            <option value="Nallakunta">Nallakunta</option>
+            <option value="Nanakramguda">Nanakramguda</option>
+            <option value="Nandigam">Nandigam</option>
+            <option value="Nandigama">Nandigama</option>
+            <option value="Nandikandi">Nandikandi</option>
+            <option value="Nandiwanaparthy">Nandiwanaparthy</option>
+            <option value="Narayan Kher">Narayan Kher</option>
+            <option value="Narayanguda">Narayanguda</option>
+            <option value="Narepally">Narepally</option>
+            <option value="Narsingi">Narsingi</option>
+            <option value="Neknampur">Neknampur</option>
+            <option value="Nizampet">Nizampet</option>
+            <option value="Mallapur">Mallapur</option>
+            <option value="Mallepally">Mallepally</option>
+            <option value="Manchirevula">Manchirevula</option>
+            <option value="Manikonda">Manikonda</option>
+            <option value="Mankhal">Mankhal</option>
+            <option value="Mansanpally">Mansanpally</option>
+            <option value="Mansanpally Highway">Mansanpally Highway</option>
+            <option value="Mansarpally">Mansarpally</option>
+            <option value="Masab Tank">Masab Tank</option>
+            <option value="Mazidpur">Mazidpur</option>
+            <option value="Medak Road">Medak Road</option>
+            <option value="Medchal">Medchal</option>
+            <option value="Medipally">Medipally</option>
+            <option value="Meerkhanpet">Meerkhanpet</option>
+            <option value="Meerpet">Meerpet</option>
+            <option value="Mettuguda">Mettuguda</option>
+            <option value="Mirkhanpet">Mirkhanpet</option>
+            <option value="Miyapur">Miyapur</option>
+            <option value="Miyapur HMT Swarnapuri Colony">
+              Miyapur HMT Swarnapuri Colony
+            </option>
+            <option value="Mokila">Mokila</option>
+            <option value="Mominpet">Mominpet</option>
+            <option value="Moosapet">Moosapet</option>
+            <option value="Moti Nagar">Moti Nagar</option>
+            <option value="Moula Ali">Moula Ali</option>
+            <option value="Mucherla">Mucherla</option>
+            <option value="Muthangi">Muthangi</option>
+            <option value="Old Bowenpally">Old Bowenpally</option>
+            <option value="Osman Nagar">Osman Nagar</option>
+            <option value="Padmarao Nagar">Padmarao Nagar</option>
+            <option value="Panchavati Colony">Panchavati Colony</option>
+            <option value="Panjagutta">Panjagutta</option>
+            <option value="Patancheru">Patancheru</option>
+            <option value="Pati">Pati</option>
+            <option value="Patighanpur">Patighanpur</option>
+            <option value="Pedda Amberpet">Pedda Amberpet</option>
+            <option value="Peddapur">Peddapur</option>
+            <option value="Peerzadiguda">Peerzadiguda</option>
+            <option value="Pocharam">Pocharam</option>
+            <option value="Pocharam Near Muthangi">
+              Pocharam Near Muthangi
+            </option>
+            <option value="Polepalle">Polepalle</option>
+            <option value="Pragathi Nagar">Pragathi Nagar</option>
+            <option value="Pragathi Nagar Kukatpally">
+              Pragathi Nagar Kukatpally
+            </option>
+            <option value="Puppalaguda">Puppalaguda</option>
+            <option value="Quthbullapur">Quthbullapur</option>
+            <option value="RBI Colony">RBI Colony</option>
+            <option value="Rachloor">Rachloor</option>
+            <option value="Raghavendra Colony">Raghavendra Colony</option>
+            <option value="Rai Durg">Rai Durg</option>
+            <option value="Raipalle">Raipalle</option>
+            <option value="Rajeev Nagar">Rajeev Nagar</option>
+            <option value="Rajendra Nagar">Rajendra Nagar</option>
+            <option value="Ramachandra Puram">Ramachandra Puram</option>
+            <option value="Ramachandrapuram">Ramachandrapuram</option>
+            <option value="Ramalingeswara Colony">Ramalingeswara Colony</option>
+            <option value="Ramanthapur">Ramanthapur</option>
+            <option value="Rameshwaram Banda">Rameshwaram Banda</option>
+            <option value="Ramnagar Hyderabad">Ramnagar Hyderabad</option>
+            <option value="Ramoji Film city">Ramoji Film city</option>
+            <option value="Rampally">Rampally</option>
+            <option value="Ranga Reddy">Ranga Reddy</option>
+            <option value="Rani Gunj">Rani Gunj</option>
+            <option value="Rasoolpura">Rasoolpura</option>
+            <option value="Ravalkole">Ravalkole</option>
+            <option value="Rayagiri Rural">Rayagiri Rural</option>
+            <option value="Rudraram">Rudraram</option>
+            <option value="SBH Colony">SBH Colony</option>
+            <option value="SBI Executive Enclave">SBI Executive Enclave</option>
+            <option value="Sadashivpet">Sadashivpet</option>
+            <option value="Sadasivpet">Sadasivpet</option>
+            <option value="Sai Krupa Colony">Sai Krupa Colony</option>
+            <option value="Saidabad">Saidabad</option>
+            <option value="Saidabad Colony Road">Saidabad Colony Road</option>
+            <option value="Sainikpuri">Sainikpuri</option>
+            <option value="Saleem Nagar">Saleem Nagar</option>
+            <option value="Sanath Nagar">Sanath Nagar</option>
+            <option value="Sangareddy">Sangareddy</option>
+            <option value="Saroor Nagar">Saroor Nagar</option>
+            <option value="Sarvasukhi Colony">Sarvasukhi Colony</option>
+            <option value="Serilingampally">Serilingampally</option>
+            <option value="Shadnagar">Shadnagar</option>
+            <option value="Shaikpet">Shaikpet</option>
+            <option value="Shamirpet">Shamirpet</option>
+            <option value="Shamshabad">Shamshabad</option>
+            <option value="Shamshabad Road">Shamshabad Road</option>
+            <option value="Shankarpalli">Shankarpalli</option>
+            <option value="Shankarpally Road">Shankarpally Road</option>
+            <option value="Shanti Nagar">Shanti Nagar</option>
+            <option value="Shastripuram Road">Shastripuram Road</option>
+            <option value="Sheriguda">Sheriguda</option>
+            <option value="Sita Meadows">Sita Meadows</option>
+            <option value="Sitaram Nagar">Sitaram Nagar</option>
+            <option value="Somajiguda">Somajiguda</option>
+            <option value="Sreenagar">Sreenagar</option>
+            <option value="Sri Nagar Colony">Sri Nagar Colony</option>
+            <option value="Sri Ramanapuram">Sri Ramanapuram</option>
+            <option value="Srinagar Colony Road">Srinagar Colony Road</option>
+            <option value="Srisailam Highway">Srisailam Highway</option>
+            <option value="Suchitra">Suchitra</option>
+            <option value="Sultanpur">Sultanpur</option>
+            <option value="Suraram">Suraram</option>
+            <option value="Suryapet">Suryapet</option>
+            <option value="Syed Ali Guda">Syed Ali Guda</option>
+            <option value="Taramatipet">Taramatipet</option>
+            <option value="Tarnaka">Tarnaka</option>
+            <option value="Teachers Colony">Teachers Colony</option>
+            <option value="Tellapur">Tellapur</option>
+            <option value="Thimmapur">Thimmapur</option>
+            <option value="Thummaloor">Thummaloor</option>
+            <option value="Tilak Nagar">Tilak Nagar</option>
+            <option value="Timarpur">Timarpur</option>
+            <option value="Toli Chowki">Toli Chowki</option>
+            <option value="Trimalgherry">Trimalgherry</option>
+            <option value="Triveninagar">Triveninagar</option>
+            <option value="Tukkuguda">Tukkuguda</option>
+            <option value="Turkayamjal">Turkayamjal</option>
+            <option value="Umdanagar">Umdanagar</option>
+            <option value="Uppal">Uppal</option>
+            <option value="Uppal Kalan">Uppal Kalan</option>
+            <option value="Upperpally">Upperpally</option>
+            <option value="Vanasthalipuram">Vanasthalipuram</option>
+            <option value="Vasanth Nagar Colony">Vasanth Nagar Colony</option>
+            <option value="Velimela">Velimela</option>
+            <option value="Velmala">Velmala</option>
+            <option value="Venkatraya Nagar">Venkatraya Nagar</option>
+            <option value="Vignanapuri Teachers Colony">
+              Vignanapuri Teachers Colony
+            </option>
+            <option value="Wangapalli">Wangapalli</option>
+            <option value="Warangal Highway Aler">Warangal Highway Aler</option>
+            <option value="Warangal highway">Warangal highway</option>
+            <option value="West Marredpally">West Marredpally</option>
+            <option value="Whitefield">Whitefield</option>
+            <option value="Yacharam">Yacharam</option>
+            <option value="Yacharam Mandal">Yacharam Mandal</option>
+            <option value="Yadadri Colony Road">Yadadri Colony Road</option>
+            <option value="Yadagirigutta">Yadagirigutta</option>
+            <option value="Yapral">Yapral</option>
+            <option value="Yousufguda">Yousufguda</option>
+            <option value="Zaheerabad">Zaheerabad</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="rate_persqft">Rate per sq ft:</label>
+          <input type="number" id="rate_persqft" name="rate_persqft" required />
+        </div>
+        <div class="form-group">
+          <label for="area_insqft">Area in sq ft:</label>
+          <input type="number" id="area_insqft" name="area_insqft" required />
+        </div>
+        <div class="form-group">
+          <label for="building_status">Building Status:</label>
+          <select id="building_status" name="building_status" required>
+            <option value="">Select building status</option>
+            <option value="Under Construction">Under Construction</option>
+            <option value="New">New</option>
+            <option value="Ready to move">Ready to move</option>
+            <option value="Resale">Resale</option>
+          </select>
+        </div>
+        <button type="submit">Predict Price</button>
+      </form>
+      <div id="prediction-result"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
